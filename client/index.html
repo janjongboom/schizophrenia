@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>test</title>
+</head>
+<body>
+    <h1 id="title">Hoi!</h1>
+    
+    <p>
+        Add numbers!
+        <input id="numbers" type="text" value="3+2+5" />
+        <button id="numbers-btn">
+    </p>
+    
+    <script src="/client/require.js"></script>
+    <script>
+        // load a jQuery plugin via jsdom and then apply my awesome plugin to it
+        require(["https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js", "require_modules/schizo"], function () {
+            $('#title').jan();
+        });
+        
+        // load the calc module, and bind it to the UI
+        require(["require_modules/calc"], function (calc) {
+            $('#numbers-btn').click(function () {
+                alert(calc.sum($('#numbers').val().split('+')));
+            });
+        });
+    </script>
+</body>
+</html>
